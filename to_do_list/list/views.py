@@ -30,5 +30,5 @@ def task(request):
 
   task_list = Task.objects.all()
 
-  return render(request, 'task.html')
+  return render(request, 'task.html', {'task_list': task_list})
 
