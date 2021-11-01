@@ -21,6 +21,8 @@ class Task(models.Model):
   task_summary = models.TextField(max_length=1000)
   task_status = models.CharField(max_length=3)
 
+  doer = models.ForeignKey('Doer', on_delete=models.CASCADE, null=True)
+
   def __str__(self):
     return self.task_title
   
