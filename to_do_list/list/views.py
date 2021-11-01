@@ -16,11 +16,12 @@ def index(request):
 
       if form.is_valid():
 
-        obj = Task()
+        # obj = Task()
 
-        obj.task_title = form.cleaned_data['task_title']
-        obj.task_summary = form.cleaned_data['task_summary']
-        obj.save()
+        # obj.task_title = form.cleaned_data['task_title']
+        # obj.task_summary = form.cleaned_data['task_summary']
+        # obj.save()
+        form.save()
     else:
       form = ToDoListForm()
     
