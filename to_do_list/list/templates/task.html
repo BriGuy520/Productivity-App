@@ -2,13 +2,13 @@
 
 {% block content %}
  <h1>Task Page</h1>
-<ul>
+<ol>
  {% for task in task_list %}
   <li>
     <p><strong>{{ task.task_title }}</strong></p>
     <p>{{task.task_summary}}</p>
   </li>
   {% endfor %}
-</ul>
+</ol>
 
 {% endblock %}
