@@ -3,12 +3,31 @@
 {% block content %}
 <h1>Hello</h1>
 
-<form action="" method="POST">
+<form action="." method="POST">
   {% csrf_token %}
+
+  {{ form.non_field_errors }}
+
+  {% for hidden_field in form.hidden_fields %}
+    {{ hidden_field.errors }}
+    {{ hidden_field }}
+  {% endfor %}
+
   <table>
-  {{ form.as_table }}
+  {% for field in form.visible_fields %}
+  <tr>
+    <th>{{ field.label_tag }}</th>
+  </tr>
+  <tr>
+    <td>{{field}}</td>
+    <td>
+      {{field.errors}}
+      {{ field.help_text }}
+    </td>
+  </tr>
+  {% endfor %}
   </table>
-  <input type="submit" value="Submit">
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
 {% endblock %}
