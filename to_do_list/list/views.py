@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -16,11 +16,13 @@ def index(request):
 
       if form.is_valid():
 
-        obj = Task()
+        # obj = Task()
 
-        obj.task_title = form.cleaned_data['task_title']
-        obj.task_summary = form.cleaned_data['task_summary']
-        obj.save()
+        # obj.task_title = form.cleaned_data['task_title']
+        # obj.task_summary = form.cleaned_data['task_summary']
+        # obj.save()
+
+        form.save()
 
         return HttpResponseRedirect('task')
 
@@ -34,4 +36,10 @@ def task(request):
   task_list = Task.objects.all()
 
   return render(request, 'task.html', {'task_list': task_list})
+
+def delete_task(request, pk):
+  task_to_delete = Task.objects.get(pk=pk)
+  task_to_delete.delete()
+  return render(request, 'task/')
+
 

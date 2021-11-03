@@ -4,9 +4,11 @@
  <h1>Task Page</h1>
 <ol>
  {% for task in task_list %}
-  <li>
+  <li style="padding-top:10px;">
     <p><strong>{{ task.task_title }}</strong></p>
     <p>{{task.task_summary}}</p>
+    <a class="btn btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
+    <a class="btn btn-warning" href="#">Update</a>
   </li>
   {% endfor %}
 </ol>
