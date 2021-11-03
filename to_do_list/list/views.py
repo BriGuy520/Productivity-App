@@ -16,12 +16,6 @@ def index(request):
 
       if form.is_valid():
 
-        # obj = Task()
-
-        # obj.task_title = form.cleaned_data['task_title']
-        # obj.task_summary = form.cleaned_data['task_summary']
-        # obj.save()
-
         form.save()
 
         return HttpResponseRedirect('task')
@@ -40,6 +34,6 @@ def task(request):
 def delete_task(request, pk):
   task_to_delete = Task.objects.get(pk=pk)
   task_to_delete.delete()
-  return render(request, 'task/')
+  return HttpResponseRedirect('/task/')
 
 
