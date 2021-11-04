@@ -12,8 +12,14 @@
 {% block navbar %}
 <div class="nav">
   <ul>
+
+    {% if user.is_authenticated %} 
+    <li>Hello, <a href="{% url 'login' %}">{{user.username}}</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% else %}
     <li><a href="{% url 'login' %}">Login</a></li>
     <li><a href="#">Sign Up</a></li>
+    {% endif %}
   </ul>
 </div>
 {% endblock %}
