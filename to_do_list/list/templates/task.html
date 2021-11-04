@@ -11,7 +11,7 @@
       {% csrf_token %}
       <input class="btn btn-danger" type="submit" value="Delete">
     </form>
-    <a class="btn btn-warning" href="#">Update</a>
+    <a class="btn btn-warning" href="{% url 'update_task' task.id %}">Update</a>
   </li>
   {% endfor %}
 </ol>

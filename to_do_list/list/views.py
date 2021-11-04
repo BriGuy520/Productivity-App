@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from django.urls import reverse_lazy
 
 from django.http import HttpResponse, HttpResponseRedirect
 
@@ -31,9 +34,16 @@ def task(request):
 
   return render(request, 'task.html', {'task_list': task_list})
 
-def delete_task(request, pk):
-  task_to_delete = Task.objects.get(pk=pk)
-  task_to_delete.delete()
-  return HttpResponseRedirect('/task/')
+
+class DeleteTask(DeleteView):
+  model = Task
+  success_url = reverse_lazy('task')
+
+class UpdateTask(UpdateView):
+  model = Task
+
+  fields = ['task_title', 'task_summary']
+  template_name_suffix = '_update_form'
+  success_url = reverse_lazy('task')
 
 
