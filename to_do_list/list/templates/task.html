@@ -7,10 +7,7 @@
   <li style="padding-top:10px;">
     <p><strong>{{ task.task_title }}</strong></p>
     <p>{{task.task_summary}}</p>
-    <form action="{% url 'delete_task' task.id %}" method="post">
-      {% csrf_token %}
-      <input class="btn btn-danger" type="submit" value="Delete">
-    </form>
+    <a class="btn btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
     <a class="btn btn-warning" href="{% url 'update_task' task.id %}">Update</a>
   </li>
   {% endfor %}

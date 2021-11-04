@@ -37,6 +37,7 @@ def task(request):
 
 class DeleteTask(DeleteView):
   model = Task
+  template_name_suffix = '_delete_form'
   success_url = reverse_lazy('task')
 
 class UpdateTask(UpdateView):
