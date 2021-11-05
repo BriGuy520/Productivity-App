@@ -6,5 +6,5 @@ class ToDoListForm(ModelForm):
   class Meta:
     model = Task
     
-    fields = ('task_title', 'task_summary',)
+    fields = ('task_title', 'task_summary', 'task_status')
 

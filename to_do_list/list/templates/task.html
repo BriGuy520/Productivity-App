@@ -5,6 +5,7 @@
 <ol>
  {% for task in task_list %}
   <li style="padding-top:10px;">
+    <p>{{ task.get_task_status_display }}</p>
     <p><strong>{{ task.task_title }}</strong></p>
     <p>{{task.task_summary}}</p>
     <a class="btn btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>

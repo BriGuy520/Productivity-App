@@ -19,7 +19,14 @@ class Task(models.Model):
   
   task_title = models.CharField(max_length=100)
   task_summary = models.TextField(max_length=1000)
-  task_status = models.CharField(max_length=3)
+
+  STATUS = (
+    ('NOT_STARTED', 'Not Started'),
+    ('IN_PROGRESS', 'In Progress'),
+    ('FINISHED', 'Finished'), 
+  )
+
+  task_status = models.CharField(max_length=12, choices=STATUS, default='NOT_STARTED')
 
   doer = models.ForeignKey('Doer', on_delete=models.CASCADE, null=True)
 
