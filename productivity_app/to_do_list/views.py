@@ -11,7 +11,7 @@ from .forms import ToDoListForm
 
 # Create your views here.
 
-def index(request):
+def add_task(request):
 
     if request.method == "POST":
 
@@ -26,7 +26,7 @@ def index(request):
     else:
       form = ToDoListForm()
     
-    return render(request, 'index.html', {'form': form})
+    return render(request, 'add_task.html', {'form': form})
 
 def task(request):
 
