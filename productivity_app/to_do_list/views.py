@@ -21,7 +21,7 @@ def add_task(request):
 
         form.save()
 
-        return HttpResponseRedirect('task')
+        return render(request,'task')
 
     else:
       form = ToDoListForm()

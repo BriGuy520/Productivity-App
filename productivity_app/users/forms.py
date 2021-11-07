@@ -7,12 +7,12 @@ class DoerCreationForm(UserCreationForm):
 
     class Meta:
         model = Doer
-        fields = ('first_name', 'last_name', 'username', 'email')
+        fields = ('email', 'first_name', 'last_name', 'password')
 
 class DoerChangeForm(UserChangeForm):
 
     class Meta:
         model = Doer
-        fields = ('username', 'first_name', 'last_name',)
+        fields = ('first_name', 'last_name',)
 
 

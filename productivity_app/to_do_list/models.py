@@ -1,7 +1,6 @@
 from django.db import models
+from django.conf import settings
 from django.forms import ModelForm
-
-from users.models import Doer
 
 import uuid
 
@@ -9,7 +8,7 @@ import uuid
 
 class Task(models.Model):
 
-  doer = models.ForeignKey(Doer, on_delete=models.CASCADE, null=True, blank=True)
+  doer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
   
   task_title = models.CharField(max_length=100)
   task_summary = models.TextField(max_length=1000)

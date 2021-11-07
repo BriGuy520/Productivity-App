@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form method="post" action="{% url 'login' %}">
+<form method="post" action="/tasks/add_task/">
     {% csrf_token %} 
     <table>
         <tr>
