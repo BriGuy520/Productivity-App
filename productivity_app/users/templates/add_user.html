@@ -2,7 +2,9 @@
 
 {% block content %}
 <form action="" method="post">
-  {{form}}
+{% csrf_token %}
+  {{form.as_p}}
+  <input class="btn btn-success" type="submit" value"Sign Up" />
 </form>
 
 {% endblock %}
