@@ -22,7 +22,7 @@ def add_user(request):
 
       login(request, user)
 
-      return redirect('/')
+      return redirect('/user/')
 
   else:
     form = DoerCreationForm()

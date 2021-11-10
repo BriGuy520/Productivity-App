@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
-{% for user in users %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
 
   <h1>User Profile, {{user.first_name}}</h1>
-{% endfor %}
+{% endif %}
+
+{% endblock %}

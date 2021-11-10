@@ -14,11 +14,11 @@
   <ul>
 
     {% if user.is_authenticated %} 
-    <li>Hello, <a href="{% url 'user_profile' %}">{{user.username}}</a></li>
+    <li>Hello, <a href="{% url 'user_profile' %}">{{user.first_name}}</a></li>
     <li><a href="{% url 'logout' %}">Logout</a></li>
     {% else %}
-    <li><a href="{% url 'login' %}">Login</a></li>
-    <li><a href="#">Sign Up</a></li>
+    <li><a href="{% url 'user_login' %}">Login</a></li>
+    <li><a href="{% url 'add_user' %}">Sign Up</a></li>
     {% endif %}
   </ul>
 </div>
