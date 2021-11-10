@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
+from django.contrib.auth.views import LoginView
+
 from django.contrib.auth import get_user_model, login
 
 from django.http import HttpResponse, HttpResponseRedirect
@@ -37,18 +39,6 @@ def user_profile(request):
 
   return render(request, 'user_profile.html', {'users': Doer.objects.all()})
 
-def user_login(request):
+class UserLogin(LoginView):
 
-  if request.method == 'POST':
-
-    form = DoerLoginForm
-
-    if form.is_valid():
-
-      pass
-
-  else:
-
-    form = DoerLoginForm
-  
-  return render(request, 'user_login.html', {'form': form})
+  template_name = 'user_login.html'
