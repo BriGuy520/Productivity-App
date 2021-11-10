@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
 
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 
 from django.http import HttpResponse, HttpResponseRedirect
 
-from .forms import DoerCreationForm
+from .forms import DoerCreationForm, DoerLoginForm
 
 
 # Create your views here.
@@ -18,14 +18,16 @@ def add_user(request):
 
     if form.is_valid():
 
-      form.save()
+      user = form.save()
 
-      return HttpResponseRedirect('/')
+      login(request, user)
 
-    else:
-      form = DoerCreationForm()
-      
-    return render(request, 'add_user.html', {'form': form})
+      return redirect('/')
+
+  else:
+    form = DoerCreationForm()
+    
+  return render(request, 'add_user.html', {'form': form})
 
 
 
@@ -34,3 +36,19 @@ def user_profile(request):
   Doer = get_user_model()
 
   return render(request, 'user_profile.html', {'users': Doer.objects.all()})
+
+def user_login(request):
+
+  if request.method == 'POST':
+
+    form = DoerLoginForm
+
+    if form.is_valid():
+
+      pass
+
+    else:
+
+      form = DoerLoginForm
+  
+  return render(request, 'user_login.html', {'form': form})
