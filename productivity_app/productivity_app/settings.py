@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'to_do_list.apps.ToDoListConfig',
     'users.apps.UsersConfig',
+    'nutrition.apps.NutritionConfig',
 ]
 
 MIDDLEWARE = [
