@@ -2,9 +2,8 @@
 
 {% block content %}
 
-{% for user in users %}
-
+{% if user.is_authenticated %}
   <h1>User Profile, {{user.first_name}}</h1>
+{% endif %}
 
-{% endfor %}
 {% endblock %}
