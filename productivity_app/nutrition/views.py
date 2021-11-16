@@ -8,13 +8,11 @@ import requests
 
 # Create your views here.
 def search_food(request):
-  
 
-  r = requests.get('https://api.nal.usda.gov/fdc/v1/foods/list?api_key=' + settings.API_KEY)
-  foods = r.json()
-  print('Status: {}'.format(r.status_code))
-  
-  return render(request, 'nutrition/food_list.html', {'foods': foods})
+    search_term = 'milk'  
 
-    
+    r = requests.get('https://api.nal.usda.gov/fdc/v1/foods/search?api_key=' + settings.API_KEY + '&query=' + search_term)
+    foods = r.json()
+    print('Status: {}'.format(r.status_code))
 
+    return render(request, 'nutrition/food_list.html', {'foods': foods})

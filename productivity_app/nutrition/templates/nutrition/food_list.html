@@ -2,12 +2,16 @@
 
 {% block content%}
 
-{% for food in foods %}
 
-  {{food}}
+<ul>
+  
+  {% for food in foods.foods %}
+  
+    <li>{{food.description}}</li>
 
+  {% endfor %}
 
-{% endfor %}
+</ul>
 
 
 {% endblock %}
