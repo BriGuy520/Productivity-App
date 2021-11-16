@@ -9,7 +9,7 @@ import requests
 # Create your views here.
 def search_food(request):
 
-    search_term = 'milk'  
+    search_term = 'cheddar cheese'  
 
     r = requests.get('https://api.nal.usda.gov/fdc/v1/foods/search?api_key=' + settings.API_KEY + '&query=' + search_term)
     foods = r.json()
