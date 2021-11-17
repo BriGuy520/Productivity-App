@@ -2,10 +2,16 @@
 
 {% block content%}
 
-
 <ul>
-  
-<li>{{foods.parsed.0.food.nutrients}}</li>
+  {% for food in foods.hints %}
+  <li>
+    <h5>{{food.food.label}} ({{food.measures.0.label}} {{food.measures.0.weight}}g)</h5>
+    <p><strong>Calories:</strong> {{food.food.nutrients.ENERC_KCAL}}</p>
+    <p><strong>Protein:</strong> {{food.food.nutrients.PROCNT}}</p>
+    <p><strong>Fat:</strong> {{food.food.nutrients.FAT}}</p>
+    <p><strong>Carbs:</strong> {{food.food.nutrients.CHOCDF}}</p>
+  </li>
+  {% endfor %}
 </ul>
 
 
