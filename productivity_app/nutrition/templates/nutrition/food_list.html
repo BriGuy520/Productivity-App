@@ -5,19 +5,7 @@
 
 <ul>
   
-  {% for food in foods.foods %}
-  
-    <li>
-      <h3>{{food.description}}</h3>
-
-      {% for nutrient in food.foodNutrients %}
-      
-      <p><strong>{{nutrient.nutrientName}}:</strong> {{nutrient.value}}{{nutrient.unitName}}</p>
-      {% endfor %}
-    </li>
-
-  {% endfor %}
-
+<li>{{foods.parsed.0.food.nutrients}}</li>
 </ul>
 
 
