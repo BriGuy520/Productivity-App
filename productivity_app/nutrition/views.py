@@ -6,10 +6,13 @@ from pprint import pprint
 
 import requests
 
+
 # Create your views here.
 def search_food(request):
 
-    search_term = 'milk'  
+ 
+
+    search_term = request.POST.get('search_term', False) 
 
     r = requests.get(f'https://api.edamam.com/api/food-database/v2/parser?app_id={settings.EDAMAM_APP_ID}&app_key={settings.EDAMAM_API_KEY}&ingr={search_term}&nutrition-type=logging&calories=0-1000&category=generic-foods')
     foods = r.json()
