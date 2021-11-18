@@ -19,9 +19,12 @@ def add_task(request):
 
       if form.is_valid():
 
-        form.save()
+        save_task = form.save(commit=False)
+        save_task.doer = request.user
 
-        return render(request,'task')
+        save_task.save()
+
+        return redirect('task')
 
     else:
       form = ToDoListForm()

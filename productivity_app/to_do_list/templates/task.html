@@ -5,9 +5,9 @@
 <ol>
  {% for task in task_list %}
   <li style="padding-top:10px;">
-    <p>{{ task.get_task_status_display }}</p>
     <h4><strong>{{ task.task_title }}</strong></h4>
     <p>{{task.task_summary}}</p>
+    <p>{{ task.get_task_status_display }}</p>
     <a class="btn btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
     <a class="btn btn-warning" href="{% url 'update_task' task.id %}">Update</a>
   </li>

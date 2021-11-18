@@ -83,11 +83,11 @@ class Doer(AbstractBaseUser, PermissionsMixin):
   def get_full_name(self):
 
     full_name = '%s %s' % (self.first_name, self.last_name)
-    return full_name.strip()
+    return full_name
 
 
   def __str__(self):
-    return '{} <{}>'.format(self.get_full_name, self.email)
+    return '{} {}<{}>'.format(self.first_name, self.last_name, self.email)
   
   def has_perm(self, perm, obj=None):
 

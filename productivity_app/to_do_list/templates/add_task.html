@@ -1,33 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Hello</h1>
 
-<form action="" method="POST">
-  {% csrf_token %}
+{% if user.is_authenticated %}
 
-  {{ form.non_field_errors }}
+  <h1>Hello, {{user.first_name}}</h1>
 
-  {% for hidden_field in form.hidden_fields %}
-    {{ hidden_field.errors }}
-    {{ hidden_field }}
-  {% endfor %}
+  <form action="" method="POST">
+    {% csrf_token %}
 
-  <table>
-  {% for field in form.visible_fields %}
-  <tr>
-    <th>{{ field.label_tag }}</th>
-  </tr>
-  <tr>
-    <td>{{field}}</td>
-    <td>
-      {{field.errors}}
-      {{ field.help_text }}
-    </td>
-  </tr>
-  {% endfor %}
-  </table>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+    {{ form.non_field_errors }}
+
+    {% for hidden_field in form.hidden_fields %}
+      {{ hidden_field.errors }}
+      {{ hidden_field }}
+    {% endfor %}
+
+    <table>
+    {% for field in form.visible_fields %}
+    <tr>
+      <th>{{ field.label_tag }}</th>
+    </tr>
+    <tr>
+      <td>{{field}}</td>
+      <td>
+        {{field.errors}}
+        {{ field.help_text }}
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endif %}
+
 
 {% endblock %}

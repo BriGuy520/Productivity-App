@@ -24,7 +24,7 @@ class AddDoerForm(forms.ModelForm):
       password1 = self.cleaned_data.get('password1')
       password2 = self.cleaned_data.get('password2')
 
-      if password1 and password2 and password1 != password2:
+      if password1 and password2 and password1 is not password2:
         raise forms.ValidateForm("Passwords do not match")
       return password2
     
@@ -44,7 +44,7 @@ class UpdateDoerForm(forms.ModelForm):
   class Meta: 
     model = Doer
     fields = (
-      'email', 'password', 'first_name', 'last_name', 'is_active', 'is_staff',
+      'email', 'first_name', 'last_name', 'is_active', 'is_staff',
     )
 
   def clean_password(self):
