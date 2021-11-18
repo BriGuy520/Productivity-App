@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
 
 from django.urls import reverse_lazy
 
@@ -31,9 +32,11 @@ def add_task(request):
     
     return render(request, 'add_task.html', {'form': form})
 
+@login_required
 def task(request):
 
-  task_list = Task.objects.all()
+
+  task_list = Task.objects.filter(doer=request.user)
 
   return render(request, 'task.html', {'task_list': task_list})
 
