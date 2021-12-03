@@ -21,7 +21,6 @@ env = environ.Env()
 # reading .env file
 env.read_env()
 
-API_KEY = env('API_KEY')
 EDAMAM_API_KEY = env('EDAMAM_API_KEY')
 EDAMAM_APP_ID = env('EDAMAM_APP_ID')
 
